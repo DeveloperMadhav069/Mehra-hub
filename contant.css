@@ -1,0 +1,214 @@
+:root {
+  --saffron: #F4C430;
+  --background: #fffaf0;
+  --text-dark: #3a3a3a;
+  --text-light: #666666;
+  --accent-color: var(--saffron);
+  --card-bg: #ffffff;
+  --shadow-light: rgba(244, 196, 48, 0.15);
+  --shadow-strong: rgba(244, 196, 48, 0.3);
+  --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Keyframes */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+/* Body & Layout */
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  background: var(--background);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 60px 20px 100px;
+  line-height: 1.6;
+}
+
+/* Container: only for main title — cards are outside for spacing */
+.container {
+  width: 100%;
+  max-width: 900px;
+  padding: 0 20px;
+  margin-bottom: 60px;
+  animation: fadeIn 1s ease forwards;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--accent-color);
+  text-align: center;
+  margin: 0 auto;
+  max-width: 700px;
+  text-shadow: 1px 1px 7px rgba(244, 196, 48, 0.6);
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* Wrapper to hold all contact cards spread vertically */
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 700px;
+  gap: 60px; /* BIG vertical spacing */
+  animation: fadeIn 1.2s ease forwards;
+}
+
+/* Contact cards */
+.contact-card {
+  background: linear-gradient(145deg, #fffefa, #fff4cc);
+  border-radius: 18px;
+  padding: 40px 50px;
+  box-shadow:
+    0 6px 18px var(--shadow-light),
+    inset 0 -3px 6px rgba(244,196,48,0.2);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: default;
+  border: 3px solid transparent;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.contact-card:hover,
+.contact-card:focus-within {
+  box-shadow:
+    0 14px 40px var(--shadow-strong),
+    inset 0 -3px 10px rgba(244,196,48,0.35);
+  transform: translateY(-10px);
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+.contact-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.contact-card:nth-child(2) {
+  animation-delay: 0.45s;
+}
+.contact-card:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.contact-card:nth-child(4) {
+  animation-delay: 0.95s;
+}
+
+/* Contact Name */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--accent-color);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+/* Contact info */
+p {
+  font-size: 1.3rem;
+  margin: 12px 0;
+  color: var(--text-dark);
+}
+
+strong {
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+a {
+  color: var(--accent-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+a:hover,
+a:focus {
+  color: #d1a900;
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  color: var(--accent-color);
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 25px 15px;
+  border-top: 4px solid var(--accent-color);
+  background: var(--background);
+  box-shadow: 0 -5px 16px rgba(244, 196, 48, 0.25);
+  user-select: none;
+  animation: fadeIn 1.5s ease forwards;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .container {
+    padding: 0 15px;
+    margin-bottom: 50px;
+  }
+  h1 {
+    font-size: 2.5rem;
+    max-width: 100%;
+    letter-spacing: 2px;
+  }
+  .cards-wrapper {
+    max-width: 100%;
+    gap: 50px;
+  }
+  .contact-card {
+    padding: 35px 30px;
+  }
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 15px;
+  }
+  p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+  }
+  footer {
+    font-size: 1rem;
+    padding: 20px 10px;
+    border-top-width: 3px;
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    padding: 50px 15px 90px;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+  .contact-card {
+    padding: 30px 20px;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services Form</title>
+    <link rel="stylesheet" href="ourservices.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to our Services</h1>
+        <h2>Please enter your details</h2>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="Phone">Phone number:</label>
+            <textarea id="message" name="Phone"  required></textarea>
+
+            <button type="submit"  id="submitButton">Submit <a href="services.html"></a></button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; Mehra Family | All rights reserved.</p>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("dpFBF92yBEf02Bd6I"); // Replace with your actual EmailJS public key
+        })();
+    </script>
+    <script src="ourservices.js"></script>
+</body>
+</html>

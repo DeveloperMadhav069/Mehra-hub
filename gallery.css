@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --background-color: #fff5e1; /* Soft light background */
+  --text-color: #F4C430; /* Neon saffron */
+  --accent-color: #B59400; /* Dark saffron */
+  --card-bg: #ffffff;
+  --shadow-color: rgba(181, 148, 0, 0.3); /* saffron shadow */
+  --shadow-glow: rgba(244, 196, 48, 0.7); /* brighter glow */
+  --gradient-bg: linear-gradient(135deg, #f9e784, #d9b602);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--gradient-bg);
+  color: var(--accent-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 2rem 6rem;
+  min-height: 100vh;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Heading with a subtle glow and slide-in */
+h1 {
+  font-weight: 700;
+  margin-bottom: 3rem;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  letter-spacing: 2px;
+  color: var(--text-color);
+  text-shadow:
+    0 0 8px var(--text-color),
+    0 0 15px var(--accent-color);
+  animation: slideFadeDown 1.2s ease forwards;
+  user-select: none;
+  text-align: center;
+}
+
+/* Gallery grid with gentle 3D perspective */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.8rem;
+  width: 100%;
+  max-width: 1140px;
+  perspective: 900px;
+}
+
+.gallery-item {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 16px var(--shadow-color),
+    inset 0 0 10px var(--accent-color);
+  cursor: pointer;
+  opacity: 0;
+  border: 2px solid transparent;
+  animation: fadeInUp 0.7s cubic-bezier(0.36, 0.66, 0.04, 1) forwards;
+  transition:
+    transform 0.5s cubic-bezier(0.77, 0, 0.175, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+  will-change: transform;
+  background-clip: padding-box;  
+}
+
+/* Stagger animation delay */
+.gallery-item:nth-child(1) { animation-delay: 0.12s; }
+.gallery-item:nth-child(2) { animation-delay: 0.24s; }
+.gallery-item:nth-child(3) { animation-delay: 0.36s; }
+.gallery-item:nth-child(4) { animation-delay: 0.48s; }
+.gallery-item:nth-child(5) { animation-delay: 0.60s; }
+.gallery-item:nth-child(6) { animation-delay: 0.72s; }
+
+.gallery-item img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 4px solid var(--accent-color);
+  filter: drop-shadow(0 2px 4px rgba(181, 148, 0, 0.25));
+  transition: transform 0.5s ease, filter 0.5s ease;
+  will-change: transform;
+  user-select: none;
+  backface-visibility: hidden;
+}
+
+.caption {
+  padding: 1.25rem 1.5rem;
+  color: var(--accent-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  user-select: none;
+  text-shadow: 0 0 4px #b59400aa;
+}
+
+/* Hover dynamics with smooth 3D tilt, scale and glowing shadow */
+.gallery-item:hover {
+  transform: scale(1.08) translateZ(20px);
+  border-color: var(--accent-color);
+  box-shadow:
+    0 12px 28px var(--shadow-glow),
+    inset 0 0 18px var(--accent-color);
+  z-index: 10;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.25) rotate(3deg);
+  filter: drop-shadow(0 6px 10px var(--shadow-glow));
+}
+
+/* Footer styling with fade in and glowing text */
+footer {
+  margin-top: 4rem;
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 1140px;
+  text-align: center;
+  border-top: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  user-select: none;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+footer p {
+  margin: 0.2rem 0;
+  text-shadow: 0 0 8px var(--accent-color);
+}
+
+footer .heart {
+  color: var(--text-color);
+  font-weight: 900;
+  font-size: 1.2rem;
+  animation: heartbeat 1.5s ease-in-out infinite;
+  display: inline-block;
+  margin-left: 0.2rem;
+  text-shadow:
+    0 0 10px var(--text-color),
+    0 0 18px var(--text-color);
+}
+
+/* Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.85;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Center the heading horizontally and vertically within its container */
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* vertically centers if container has height */
+  text-align: center;
+  width: 100%;
+  max-width: 1100px;
+  min-height: 150px; /* Adjust if needed for vertical centering */
+  margin: 0 auto;
+  /* You can remove flex-grow here if it causes issues */
+}
+
+/* Keep the enhanced h1 styles (from previous) */
+h1 {
+  font-weight: 800;
+  margin-bottom: 3rem;
+  font-size: clamp(2.6rem, 6vw, 3.6rem);
+  letter-spacing: 3px;
+  color: var(--text-color);
+  text-shadow:
+    0 0 12px var(--text-color),
+    0 0 25px var(--accent-color),
+    0 0 40px var(--accent-color),
+    0 0 60px #FFD54F;
+  animation: slideFadeDown 1.2s ease forwards;
+  user-select: none;
+  text-align: center;
+  background: rgba(244, 196, 48, 0.15);
+  display: inline-block;
+  padding: 0.2em 1em;
+  border-radius: 12px;
+  box-shadow:
+    0 0 20px var(--accent-color),
+    0 8px 16px rgba(220, 180, 30, 0.3);
+}
